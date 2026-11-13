@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<!-- Guia Gestoria, baseado no template INEMA projetos-landing-guia. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Gestoria — Management of processes, people, and AI agents</title>
+<link href="https://inematds.github.io/gestoria/guia/" rel="canonical"/>
+<meta content="https://inematds.github.io/gestoria/capa/capa.png" property="og:image"/>
+<meta content="AI Management Lab: processes, digital roles, autonomy, human decisions, evaluations, and continuous improvement. Local MVP with clearly identified simulations." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#E2A23B; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#b9791d; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(226,162,59,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:34ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;display:block}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.92rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(226,162,59,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px 1fr;gap:16px;margin-bottom:26px}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ex figure img{width:100%;display:block}
+  .ex figcaption{padding:12px 14px;font-size:.88rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
+
+  /* Adaptações de acessibilidade e navegação móvel do template. */
+  body.light nav{background:var(--bg)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--sky);outline-offset:4px}
+  .step>div:last-child{min-width:0}
+  @media(max-width:540px){nav .wrap{height:auto;flex-wrap:wrap;gap:10px 12px;padding-top:10px;padding-bottom:10px}nav .links{flex-basis:100%;gap:12px;justify-content:flex-end}nav .brand{font-size:15px}.phase .tag{flex-basis:80px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<link href="https://inematds.github.io/gestoria/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/gestoria/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/gestoria/guia/es/" hreflang="es" rel="alternate"/></head>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="./" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<nav><div class="wrap">
+<a class="brand" href="#top"><span class="emoji">🧭</span> Gestoria</a>
+<span class="sep">|</span>
+<span class="clubpro">
+<a class="inema" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+<span class="sep">-</span>
+<a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
+</span>
+<div class="links">
+<a class="sec" href="#oque">What it is</a>
+<a class="sec" href="#fluxo">How it works</a>
+<a class="sec" href="#guia">User guide</a>
+<a class="sec" href="#exemplos">Examples</a>
+<a class="sec" href="#roadmap">Roadmap</a>
+<button aria-label="Switch theme" class="tgl" id="themeToggle" title="Switch theme">🌙</button>
+<a class="btn" href="https://github.com/inematds/gestoria" rel="noopener" target="_blank">GitHub</a>
+</div>
+</div></nav>
+<header class="hero" id="top">
+<div class="glow"></div>
+<div class="wrap">
+<div>
+<span class="chip">Management tool · MVP with simulation</span>
+<h1>A real process.<br/>One operation <span class="amb">under management.</span></h1>
+<p class="lead">Organize digital roles, responsibilities, and autonomy. Track decisions, evaluations, and improvements in a lab that runs in your browser.</p>
+<div class="cta">
+<a class="btn" href="../">Open tool</a>
+<a class="btn ghost" href="#guia">Read the step-by-step guide</a>
+</div>
+</div>
+<figure><img alt="Illustration of a manager coordinating robotic assistants; an AI-generated conceptual depiction." src="../assets/hero.png"/></figure>
+</div>
+</header>
+
+<section id="video"><div class="wrap">
+  <span class="chip">Video</span>
+  <h2>Watch the explainer</h2>
+  <p class="sub">The project explained in a few minutes.</p>
+  <div style="position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid var(--line,#272730)"><iframe src="https://www.youtube.com/embed/EtBGK2Hgz9E" title="Watch the explainer" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy" allowfullscreen></iframe></div>
+</div></section>
+
+<section id="oque"><div class="wrap">
+<span class="chip">What it is</span>
+<h2>Manage work, from process to evidence.</h2>
+<p class="sub">The first version works with local data and fictional scenarios. It does not run models or access CRM, ERP, or email. Real integrations have a separate technical plan.</p>
+<div class="grid g3">
+<div class="card"><h3>🧭 Processes and roles</h3><p>Define an objective, a human owner, steps, and a target. Give each agent a mission, inputs, deliverables, and limits.</p></div>
+<div class="card"><h3>🧭 Autonomy and review</h3><p>Simulate normal situations and exceptions. Record human decisions and check the promotion criteria for each version.</p></div>
+<div class="card"><h3>🧭 Evidence and improvement</h3><p>Compare expected and produced results, track metrics, and document experiments in the LOOP-R cycle.</p></div>
+</div>
+</div></section>
+<section id="fluxo"><div class="wrap">
+<span class="chip">How it works</span>
+<h2>An operation with clear accountability.</h2>
+<p class="sub">Start with a single process. The supervisor and integrations are part of the future architecture; the lab already lets you design and practice management.</p>
+<div class="flow"><span>Process</span><span class="arr">→</span><span>Digital role</span><span class="arr">→</span><span>Autonomy</span><span class="arr">→</span><span>Review</span><span class="arr">→</span><span>Evaluation</span><span class="arr">→</span><span>Improvement</span></div>
+</div></section>
+<section id="pre"><div class="wrap"><span class="chip">Prerequisites</span><h2>Open it in your browser or run it on your computer.</h2><p class="sub">To try the published version, all you need is a modern browser. To edit the code locally, use Git, Node.js 22.12+ or 24+, and npm.</p><div class="grid g2"><div class="card"><h3>Try online</h3><p>Open the tool. Data stays in this browser and on this origin; export a JSON copy to save your work.</p><p><a href="../">Open the Gestoria lab</a></p></div><div class="card"><h3>Edit or run locally</h3><pre>node --version
+npm --version
+git --version</pre></div></div></div></section>
+<section id="guia"><div class="wrap"><span class="chip">User guide</span><h2>From the first process to documented improvement.</h2><p class="sub">The sales qualification example is fictional. Use it to learn the workflow, then add your own scope using anonymized data.</p><div class="step"><div class="b">1</div><div><h3>Open the published version</h3><p>Use the “Open tool” button. To run a local copy, execute:</p><pre>git clone https://github.com/inematds/gestoria.git
+cd gestoria
+npm install
+npm run dev</pre></div></div><div class="step"><div class="b">2</div><div><h3>Map the process</h3><p>In Processes, create an operation with an objective, owner, steps, volume, current time, and target. Start with a narrow scope, such as preparing sales qualification.</p></div></div><div class="step"><div class="b">3</div><div><h3>Create the digital role</h3><p>In Workforce, record the mission, inputs, output, owner, and what the agent can and cannot do. Tools, model, and Skills are metadata planned for this version.</p></div></div><div class="step"><div class="b">4</div><div><h3>Simulate and review</h3><p>In Overview, choose a process and simulate a routine, conflicting data, or a request outside the policy. In Human Decisions, approve it or send it back with a reason.</p></div></div><div class="step"><div class="b">5</div><div><h3>Evaluate the version</h3><p>Record the expected result, the result produced, and the human classification. Check the agent profile: educational promotion requires 100 cases from the current version, the target met, no critical errors, and all pending items resolved.</p></div></div><div class="step"><div class="b">6</div><div><h3>Close the improvement loop</h3><p>In Continuous Improvement, record the problem, hypothesis, and test. Add evidence to validate and promote an experiment. Changing the agent creates a new version and requires a new evaluation.</p></div></div><div class="step"><div class="b">7</div><div><h3>Save and retrieve your work</h3><p>In Lab Data, export the JSON copy. Importing replaces the current records after confirmation. There is no account or syncing between devices.</p></div></div></div></section>
+<section id="exemplos"><div class="wrap"><h2>The working tool.</h2><p class="sub">Real app capture with the initial fictional data. Metrics are calculated from the lab records.</p><div class="ex"><figure><img alt="Gestoria overview: calculated indicators, sales process, and human decision queue." loading="lazy" src="../assets/laboratorio.png"/><figcaption>Initial state of the lab; people, companies, and amounts are fictional examples.</figcaption></figure><div><h3>How to read the metrics</h3><p>A human approval increases the number of completed cases, but not the autonomous work. Pending and returned cases are shown separately.</p><p>Cost includes all attempts. Evaluations count only for the agent’s current version.</p><h3>The course that accompanies the method</h3><p>The proposal includes ten modules and an applied project. The plan is available now; lessons are in development.</p><a class="btn ghost" href="https://inematds.github.io/curso-gestao-ia/">View the course plan</a></div></div></div></section>
+<section id="roadmap"><div class="wrap"><h2>From simulation to enterprise pilot.</h2><p class="sub">Progress is guided by evidence. What’s available today is the lab; future phases require authorized systems and data.</p><div class="phase"><div class="tag">Available</div><div class="d"><strong>Management lab</strong><span>Processes, roles, simulations, decisions, evaluations, educational promotion, LOOP-R, and export.</span></div></div><div class="phase"><div class="tag">Next phase</div><div class="d"><strong>Integrated pilot</strong><span>Authentication, database, one model, and read-only CRM, preparing deliverables for human review.</span></div></div><div class="phase"><div class="tag">Progress</div><div class="d"><strong>Controlled operations</strong><span>Server-side policies, restricted actions, approvals linked to content, queues, and rollback.</span></div></div><div class="phase"><div class="tag">After</div><div class="d"><strong>Team and portfolio</strong><span>Multi-agent supervision and multiple processes when there is a proven benefit over the simple solution.</span></div></div></div></section>
+<footer>
+<div class="wrap">
+<div class="pill">TypeScript</div><div class="pill">Vite</div><div class="pill">Local storage</div>
+<p style="margin-top:18px">Gestoria · educational MVP · no real AI execution ·
+      <a href="https://github.com/inematds/gestoria">inematds/gestoria</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+  (function(){
+    var KEY='gestoria-guia-theme'; // troque gestoria-guia pelo nome do projeto
+    var b=document.body, t=document.getElementById('themeToggle');
+    var stored;try{stored=localStorage.getItem(KEY)}catch{}
+    if(stored==='light'){ b.classList.add('light'); t.textContent='☀️'; }
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{localStorage.setItem(KEY, light?'light':'dark')}catch{}
+    });
+  })();
+</script>
+</body>
+</html>
